@@ -35,3 +35,6 @@
 
    views.py文件
 4. 映射视图到URL
+5. 配置全局URLconf
+
+### django数据库
