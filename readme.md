@@ -271,8 +271,6 @@
 
 通过以上步骤，就可以在 Django 中定义和使用模型来与数据库进行交互。模型提供了一种强大而灵活的方式来管理数据，使得开发人员可以专注于业务逻辑的实现，而无需直接处理数据库操作。
 
-
-
 ### url映射详解
 
 在 Django 中，URL 映射是将用户请求的 URL 与相应的视图函数进行关联的过程。通过 URL 映射，Django 能够确定如何处理不同的 URL 请求并返回适当的响应。
@@ -388,3 +386,87 @@
 ```html
    <a href="{% url 'year_archive' 2023 %}">2023 Archive</a>
 ```
+
+### django Admin管理
+
+Django Admin 是 Django 框架中一个强大的自动管理界面工具。
+
+#### **一、主要特点**
+
+1. 快速生成管理界面：
+   * 无需手动编写大量的 HTML 和 JavaScript 代码，Django Admin 可以根据你的模型定义自动生成一个功能齐全的管理界面。
+   * 可以对数据库中的数据进行查看、编辑、添加和删除等操作。
+2. 模型注册：
+   * 通过在 `admin.py`文件中注册模型，可以将模型暴露在管理界面中。
+   * 示例代码：
+
+```python
+     from django.contrib import admin
+     from.models import MyModel
+
+     admin.site.register(MyModel)
+```
+
+3. 字段显示和编辑：
+   * 管理界面会自动显示模型的各个字段，可以方便地进行编辑。
+   * 可以自定义字段的显示方式和编辑选项，例如使用 `list_display`、`list_filter`、`search_fields`等属性来控制列表页面的显示和搜索功能。
+4. 动作和批量操作：
+   * 可以定义自定义动作，对选中的对象进行批量操作。
+   * 例如，可以定义一个动作来批量删除或更新对象。
+5. 权限管理：
+   * Django Admin 与 Django 的权限系统集成，可以对不同的用户和用户组设置不同的访问权限。
+   * 可以控制谁可以访问管理界面，以及他们可以对哪些模型进行操作。
+
+#### **二、使用场景**
+
+1. 后台管理：
+   * 为网站或应用的管理员提供一个方便的界面来管理数据。
+   * 例如，管理用户、文章、产品等数据。
+2. 数据录入和编辑：
+   * 对于需要频繁录入和编辑数据的场景，Django Admin 可以提高效率。
+   * 例如，编辑新闻文章、添加产品信息等。
+3. 快速开发和调试：
+   * 在开发过程中，可以使用 Django Admin 来快速查看和修改数据库中的数据，方便调试和测试。
+
+#### **三、定制化**
+
+1. 自定义管理界面：
+   * 可以通过继承 `admin.ModelAdmin`类来定制管理界面的外观和行为。
+   * 可以重写方法来实现自定义的逻辑，例如 `save_model`、`get_queryset`等。
+2. 自定义表单：
+   * 可以为模型定义自定义的表单，以满足特定的输入需求。
+   * 可以使用 Django 的表单类或第三方表单库来创建自定义表单。
+3. 扩展功能：
+   * 可以通过安装第三方插件来扩展 Django Admin 的功能。
+   * 例如，添加图表、数据导入导出功能等。
+
+#### 四、admin简单使用步骤
+
+1. 创建admin用户
+
+   ```
+   python manage.py createsuperuser
+   ```
+
+   ![1730873776993](image/readme/1730873776993.png)
+2. 启动开发服务器并登录管理网页
+
+   `python manage.py runserver`
+
+   进入admin的web页面：[http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)
+3. 注册模型
+
+   ```
+   polls/admin.py
+
+   from django.contrib import admin
+   from .models import Question
+   from .models import Choice
+   admin.site.register(Question)
+   admin.site.register(Choice)
+   ```
+4. 管理功能使用
+
+   在admin管理web页面可对模型数据进行编辑
+
+总之，Django Admin 是一个非常实用的工具，可以大大提高开发效率，特别是在管理数据方面。通过定制化，可以满足不同项目的特定需求。
