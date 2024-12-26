@@ -1,9 +1,34 @@
 ### HTML
 
+html简介：html是描述网页的超文本标记语言，基本结构如下
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
+</head>
+<body>
+ 
+<h1>我的第一个标题</h1>
+ 
+<p>我的第一个段落。</p>
+ 
+</body>
+</html>
+```
+
+"HTML 标签" 和 "HTML 元素" 通常都是描述同样的意思.开始标签、结束标签和内容组成HTML元素
+
+`<标签>内容</标签>`
+
 ### CSS
 
-### javascript
+CSS（层叠样式表）：呈现网页的样式和布局
 
+
+### javascript
 
 #### javascript输出
 
